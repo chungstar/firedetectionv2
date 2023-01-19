@@ -1,8 +1,24 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Button, Navbar, Container, Nav} from 'react-bootstrap'
+import { Navbar, Container, Nav} from 'react-bootstrap'
+import { db } from "./firebase.js";
+import { onValue, ref } from "firebase/database";
+import { useState, useEffect } from 'react';
+
 
 function App() {
+  useEffect(() => {
+    const userdb = ref(db, "Users/");
+    onValue(userdb, (snapshot) => {
+      var urls = [];
+
+      snapshot.forEach(childSnapshot => {
+        urls.push(childSnapshot.val());
+      });
+    console.log(urls);
+  });
+  }, []);
+
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark">
@@ -15,7 +31,6 @@ function App() {
         </Nav>
         </Container>
       </Navbar>
-      
     </div>
   );
 }

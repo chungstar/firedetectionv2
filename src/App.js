@@ -5,6 +5,8 @@ import { db } from "./firebase.js";
 import { onValue, ref } from "firebase/database";
 import { useState, useEffect } from 'react';
 
+var tNo = 0;
+var tbody = document.getElementById('tbody');
 
 function App() {
   useEffect(() => {
@@ -15,7 +17,7 @@ function App() {
       snapshot.forEach(childSnapshot => {
         urls.push(childSnapshot.val());
       });
-    console.log(urls);
+      AddAllItemsToTable(urls);
   });
   }, []);
 
@@ -41,29 +43,38 @@ function App() {
           <th>Username</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
+      <tbody id="tbody">
       </tbody>
     </Table>
     </div>
     
   );
 }
+function AddAllItemsToTable(TheUrl){
+  tNo=0;
+  tbody.innerHTML="";
+  TheUrl.forEach(element => {
+    AddItemToTable(element.timeStamp, element.uid, element.url);
+  })
+}
+function AddItemToTable(time,email,url){
+  let trow = document.createElement("tr");
+  let td1 = document.createElement('td');
+  let td2 = document.createElement('td');
+  // let td3 = document.createElement('td');
+  let td4 = document.createElement('td');
 
+  td1.innerHTML=++tNo;
+  td2.innerHTML=time;
+  // td3.innerHTML=email;
+  td4.innerHTML=`<img src = "${url}" class="mw-100">`;
+  console.log(td4.innerHTML);
+
+  trow.appendChild(td1);
+  trow.appendChild(td2);
+  // trow.appendChild(td3);
+  trow.appendChild(td4);
+
+  tbody.appendChild(trow);
+}
 export default App;

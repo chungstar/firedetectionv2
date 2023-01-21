@@ -4,21 +4,27 @@ import { Navbar, Container, Nav, Table} from 'react-bootstrap'
 import { db } from "./firebase.js";
 import { onValue, ref } from "firebase/database";
 import { useState, useEffect } from 'react';
-
-var tNo = 0;
-var tbody = document.getElementById('tbody');
-
+const TEST_DATA=[
+  {
+    "timeStamp": "20220614-113330",
+    "uid": "admin",
+    "url": "url1"
+  },
+  {
+    "timeStamp": "20220614-113332",
+    "uid": "admin",
+    "url": "url2"
+  },
+  {
+    "timeStamp": "20220614-113333",
+    "uid": "admin",
+    "url": "url3"
+  }]
 function App() {
-  useEffect(() => {
-    const userdb = ref(db, "Users/");
-    onValue(userdb, (snapshot) => {
-      var urls = [];
+  let [data,setData] = useState(TEST_DATA);
 
-      snapshot.forEach(childSnapshot => {
-        urls.push(childSnapshot.val());
-      });
-      AddAllItemsToTable(urls);
-  });
+  useEffect(() => {
+    ReadDb();
   }, []);
 
   return (
@@ -35,20 +41,34 @@ function App() {
       </Navbar>
       
       <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-        </tr>
-      </thead>
-      <tbody id="tbody">
-      </tbody>
-    </Table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+      </Table>
     </div>
     
   );
+}
+var tNo = 0;
+var tbody = document.getElementById('tbody');
+function ReadDb(){
+  const userdb = ref(db, "Users/");
+    onValue(userdb, (snapshot) => {
+      let urls = [];
+      
+      snapshot.forEach(childSnapshot => {
+        urls.push(childSnapshot.val());
+      });
+      AddAllItemsToTable(urls);
+      console.log(urls)
+  });
 }
 function AddAllItemsToTable(TheUrl){
   tNo=0;

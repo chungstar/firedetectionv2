@@ -2,15 +2,15 @@ import { configureStore, createSlice } from '@reduxjs/toolkit'
 import { db } from "./firebase.js";
 import { onValue, ref } from "firebase/database";
 
-// const userdb = ref(db, "Users/");
-// onValue(userdb, (snapshot) => {
-//   let urls = [];
-//   snapshot.forEach(childSnapshot => {
-//     urls.push(childSnapshot.val());
-//   });
-// });
+const userdb = ref(db, "Users/");
+onValue(userdb, (snapshot) => {
+  let urls = [];
+  snapshot.forEach(childSnapshot => {
+    urls.push(childSnapshot.val());
+  });
+});
 let fsdata = createSlice({
-  name:'cart',
+  name:'fsdata',
   initialState:[
     {
       "timeStamp": "20220614-113330",

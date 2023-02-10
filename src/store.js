@@ -1,14 +1,5 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
-import { db } from "./firebase.js";
-import { onValue, ref } from "firebase/database";
 
-const userdb = ref(db, "Users/");
-onValue(userdb, (snapshot) => {
-  let urls = [];
-  snapshot.forEach(childSnapshot => {
-    urls.push(childSnapshot.val());
-  });
-});
 let fsdata = createSlice({
   name:'fsdata',
   initialState:[
@@ -38,4 +29,4 @@ export default configureStore({
   reducer: {
     fsdata:fsdata.reducer
    }
-}) 
+})

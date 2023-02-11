@@ -1,4 +1,5 @@
-import { configureStore, createSlice } from '@reduxjs/toolkit'
+import { configureStore, createSlice, applyMiddleware } from '@reduxjs/toolkit'
+import thunk from 'redux-thunk'
 
 let fsdata = createSlice({
   name:'fsdata',
@@ -17,6 +18,11 @@ let fsdata = createSlice({
       "timeStamp": "20220614-113333",
       "uid": "admin",
       "url": "url3"
+    },
+    {
+      "timeStamp": "20220614-113333",
+      "uid": "admin",
+      "url": "url3"
     }],
     reducer:{
       addCount(state){
@@ -28,5 +34,6 @@ let fsdata = createSlice({
 export default configureStore({
   reducer: {
     fsdata:fsdata.reducer
-   }
+   },
+  middleware: [thunk]
 })

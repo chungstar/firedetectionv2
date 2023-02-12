@@ -1,6 +1,6 @@
 import { configureStore, createSlice, applyMiddleware } from '@reduxjs/toolkit'
 import thunk from 'redux-thunk'
-
+import { listCartItemsReducer } from './reducers/tableReducer'
 let fsdata = createSlice({
   name:'fsdata',
   initialState:[
@@ -24,16 +24,22 @@ let fsdata = createSlice({
       "uid": "admin",
       "url": "url3"
     }],
-    reducer:{
+    reducers:{
       addCount(state){
         state[0].url++
       }
     }
 })
+let cartItemsList = createSlice({
+  name:'cartItemsList',
+  initialState:[],
+  reducers : {}
+})
 
 export default configureStore({
   reducer: {
-    fsdata:fsdata.reducer
+    fsdata:fsdata.reducer,
+    cartItemsList:cartItemsList.reducer
    },
   middleware: [thunk]
 })

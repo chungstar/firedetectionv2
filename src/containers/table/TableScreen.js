@@ -1,28 +1,21 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-
-// import { firebaseApp } from '../../firebase/firebase';
-// import { getDatabase, ref, set, remove, onValue } from 'firebase/database';
-// import { useEffect } from "react";
-
-
-
+import { listCartItems } from '../../actions/tableActions'
 
 const TableScreen = () => {
   let dataLists = useSelector((state)=>state.fsdata)
 
-  // const db = getDatabase(firebaseApp);
-  // const dbRef = ref(db, "Users");
-  // useEffect(()=>{
-  //     onValue(dbRef, (snapshot) => {
-  //         var urls = [];
-  //         snapshot.forEach(childSnapshot => {
-  //         urls.push(childSnapshot.val());
-  //         });
-  //         console.log(urls);
-  //     });
-  // },[])
+  const dispatch = useDispatch()
+
+  const cartItemsList = useSelector((state)=>state.cartItemsList)
+
+  const { loading, error, cartItems } = cartItemsList
+
+  React.useEffect(()=>{
+    dispatch(listCartItems())
+    console.log(cartItemsList)
+  },[dispatch])
 
   return (
     <>
@@ -36,6 +29,7 @@ const TableScreen = () => {
         </tr>
       </thead>
       <tbody id="tbody">
+        
         {
           dataLists.map((a,i)=>{
             return(

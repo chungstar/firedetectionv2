@@ -1,16 +1,39 @@
-import { TABLE_LIST_REQUEST,TABLE_LIST_SUCCESS,TABLE_LIST_FAIL } from "../constants/tableConstants";
-import firebaseApp from '../../service/firebase';
+import { 
+    TABLE_LIST_REQUEST,
+    TABLE_LIST_SUCCESS,
+    TABLE_LIST_FAIL 
+} from '../constants/tableConstants'
+import {firebaseApp} from '../firebase/firebase'
 import { getDatabase, ref, set, remove, onValue } from 'firebase/database';
-import { useEffect } from "react";
+
 
 const db = getDatabase(firebaseApp);
-const dbRef = ref(db, "Users");
-useEffect(()=>{
-    onValue(dbRef, (snapshot) => {
+
+export const listCartItems = () => (dispatch)=>{
+    let cartData = []
+  
+    function getCartItems(db){
+        const dbRef = ref(db, "Users");
         var urls = [];
-        snapshot.forEach(childSnapshot => {
-        urls.push(childSnapshot.val());
+        onValue(dbRef, (snapshot) => {
+            snapshot.forEach(childSnapshot => {
+            urls.push(childSnapshot.val());
+            });
         });
-        console.log(urls);
-    });
-},[])
+        return urls
+    }
+  
+    try{
+      dispatch({type: TABLE_LIST_REQUEST})
+      cartData = getCartItems(db)
+      dispatch({type: TABLE_LIST_SUCCESS, payload: cartData})
+    }catch(error){
+      dispatch({
+        type: TABLE_LIST_FAIL,
+        payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      })
+    }
+  }

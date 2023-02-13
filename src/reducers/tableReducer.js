@@ -4,17 +4,17 @@ import {
     TABLE_LIST_FAIL 
 } from '../constants/tableConstants'
 
-export const listCartItemsReducer = (state = {cartItems:[]}, action)=>{
+export const listTableItemsReducer = (state = {tableItems:[]}, action)=>{
     switch(action.type){
         case TABLE_LIST_REQUEST:
             return{
                 loading:true,
-                cartItems:[],
+                tableItems:[],
             }
         case TABLE_LIST_SUCCESS:
             return{
                 loading:false,
-                cartItems:action.payload,
+                tableItems:action.payload,
             }
         case TABLE_LIST_FAIL:
             return{

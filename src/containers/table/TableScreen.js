@@ -1,20 +1,19 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { listCartItems } from '../../actions/tableActions'
+import { listTableItems } from '../../actions/tableActions'
 
 const TableScreen = () => {
-  let dataLists = useSelector((state)=>state.fsdata)
 
   const dispatch = useDispatch()
 
-  const cartItemsList = useSelector((state)=>state.cartItemsList)
+  const tableItemsList = useSelector((state)=>state.tableItemsList)
 
-  const { loading, error, cartItems } = cartItemsList
+  const { loading, error, tableItems } = tableItemsList
 
   React.useEffect(()=>{
-    dispatch(listCartItems())
-    console.log(cartItemsList)
+    dispatch(listTableItems())
+    console.log(tableItemsList)
   },[dispatch])
 
   return (
@@ -31,13 +30,13 @@ const TableScreen = () => {
       <tbody id="tbody">
         
         {
-          dataLists.map((a,i)=>{
+          tableItems.map((a,i)=>{
             return(
             <tr onClick={()=>(console.log(a))}>
               <th>{i}</th>
-              <th>{dataLists[i].timeStamp}</th>
-              <th>{dataLists[i].uid}</th>
-              <th>{dataLists[i].url}</th>
+              <th>{tableItems[i].timeStamp}</th>
+              <th>{tableItems[i].uid}</th>
+              <th>{tableItems[i].url}</th>
             </tr>
             )
           })

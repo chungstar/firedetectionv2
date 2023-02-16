@@ -17,14 +17,14 @@ export const listTableItems = () => (dispatch)=>{
         var urls = [];
         onValue(dbRef, (snapshot) => {
             snapshot.forEach(childSnapshot => {
-            urls.push(childSnapshot.val());
+            urls.unshift(childSnapshot.val());
             });
         });
         return urls
     }
   
     try{
-      dispatch({type: TABLE_LIST_REQUEST})
+      //dispatch({type: TABLE_LIST_REQUEST})
       tableData = getTableItems(db)
       console.log(tableData)
       dispatch({type: TABLE_LIST_SUCCESS, payload: tableData})

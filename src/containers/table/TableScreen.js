@@ -13,7 +13,6 @@ const TableScreen = () => {
 
   React.useEffect(()=>{
     dispatch(listTableItems())
-    console.log(tableItemsList)
   },[dispatch])
 
   return (

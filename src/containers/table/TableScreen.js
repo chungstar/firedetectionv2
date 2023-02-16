@@ -18,31 +18,38 @@ const TableScreen = () => {
 
   return (
     <>
-    <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>timeStamp</th>
-          <th>uid</th>
-          <th>url</th>
-        </tr>
-      </thead>
-      <tbody id="tbody">
-        
-        {
-          tableItems.map((a,i)=>{
-            return(
-            <tr onClick={()=>(console.log(a))}>
-              <th>{i}</th>
-              <th>{tableItems[i].timeStamp}</th>
-              <th>{tableItems[i].uid}</th>
-              <th>{tableItems[i].url}</th>
-            </tr>
-            )
-          })
-        }
-      </tbody>
-    </Table>
+      { loading ? (
+          <div>Loading</div>
+        ): error ? (
+          <div>{error}</div>
+        ):(
+          <>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>timeStamp</th>
+                <th>uid</th>
+                <th>url</th>
+              </tr>
+            </thead>
+            <tbody id="tbody">      
+              {
+                tableItems.map((a,i)=>{
+                  return(
+                  <tr onClick={()=>(console.log(a))}>
+                    <th>{i}</th>
+                    <th>{tableItems[i].timeStamp}</th>
+                    <th>{tableItems[i].uid}</th>
+                    <th>{tableItems[i].url}</th>
+                  </tr>
+                  )
+                })
+              }
+            </tbody>
+          </Table>
+        </>
+      )} 
     </>
   )
 }

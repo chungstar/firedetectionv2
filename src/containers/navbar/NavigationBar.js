@@ -7,18 +7,21 @@ const NavigationBar=({navigate}) => {
             <Container>
                 <Navbar.Brand href="/">Navbar</Navbar.Brand>
                 <Nav className="me-auto">
-                <Nav.Link onClick={() => {
-                navigate('/');
-                }}>Home</Nav.Link>
-                <Nav.Link onClick={() => {
-                navigate('/목록');
-                }}>목록</Nav.Link>
-                <Nav.Link onClick={() => {
-                navigate('/2');
-                }}>?</Nav.Link>
+                    <Nav.Link onClick={() => {
+                    navigate('/');
+                    }}>Home</Nav.Link>
+                    <Nav.Link onClick={() => {
+                    navigate('/목록');
+                    }}>목록</Nav.Link>
+                </Nav>
+                <Nav className="ms-auto">
+                    <Nav.Link onClick={() => {
+                        navigate('/Login');
+                        }}>Login</Nav.Link>
                 </Nav>
             </Container>
         </Navbar>
+        
     )}
 export default NavigationBar
   

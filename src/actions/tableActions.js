@@ -3,7 +3,7 @@ import {
     TABLE_LIST_SUCCESS,
     TABLE_LIST_FAIL 
 } from '../constants/tableConstants'
-import { firebaseApp } from '../firebase/firebase'
+import firebaseApp from '../firebase/firebase'
 import { getDatabase, ref, set, remove, onValue } from 'firebase/database';
 
 
@@ -24,7 +24,7 @@ export const listTableItems = () => (dispatch)=>{
     }
   
     try{
-      //dispatch({type: TABLE_LIST_REQUEST})
+      dispatch({type: TABLE_LIST_REQUEST})
       tableData = getTableItems(db)
       console.log(tableData)
       dispatch({type: TABLE_LIST_SUCCESS, payload: tableData})

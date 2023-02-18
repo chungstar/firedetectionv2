@@ -3,7 +3,7 @@ import {
     TABLE_LIST_SUCCESS,
     TABLE_LIST_FAIL 
 } from '../constants/tableConstants'
-import firebaseApp from '../firebase/firebase'
+import { firebaseApp } from '../firebase/firebase'
 import { getDatabase, ref, set, remove, onValue } from 'firebase/database';
 
 

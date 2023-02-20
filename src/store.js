@@ -1,4 +1,4 @@
-import { configureStore, createSlice, applyMiddleware } from '@reduxjs/toolkit'
+import { configureStore, createSlice} from '@reduxjs/toolkit'
 import thunk from 'redux-thunk'
 import { listTableItemsReducer } from './reducers/tableReducer'
 

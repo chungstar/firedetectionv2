@@ -4,7 +4,7 @@ import {
     TABLE_LIST_FAIL 
 } from '../constants/tableConstants'
 import { firebaseApp } from '../firebase/firebase'
-import { getDatabase, ref, set, remove, onValue } from 'firebase/database';
+import { getDatabase, ref, onValue } from 'firebase/database';
 
 
 const db = getDatabase(firebaseApp);

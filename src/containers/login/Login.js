@@ -1,16 +1,41 @@
 import React, {useState} from 'react'
 import { Container,Col,Row,Form,FormGroup,Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../../firebase/firebase'
 
 const Login = () => {
-    const [email,setEmail] = useState('')
-    const [password,setPassword] = useState('')
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState('');
+    const [loading,setLoading] = useState(false);
+    const navigate = useNavigate();
+
+    const signin = async(e)=>{
+        e.preventDefault()
+        setLoading(true)
+
+        try{
+            const userCredential = await signInWithEmailAndPassword(auth,email,password)
+            
+            const user = userCredential.user
+
+            console.log(user)
+            setLoading(false)
+            alert('성공적으로 로그인했습니다')
+            navigate('/목록')
+        }catch(error){
+            setLoading(false)
+            alert(error.message);
+        };
+    }
+
     return (
     <Container>
         <Row>
-            <Col lg={6} className="m-auto">
+            {
+                loading ? <Col lg={12} className='text-center'>loading...</Col> :             <Col lg={6} className="m-auto">
                 <h2 className='fw-bold mb-3 text-center'>Login</h2>
-                <Form className='fw-bold auth_form'>
+                <Form className='fw-bold auth_form' onSubmit= {signin}>
                     <FormGroup className='mb-2'>
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type='email' placeholder='Enter your email' value={email} onChange={(a)=>setEmail(a.target.value)}/>
@@ -20,11 +45,12 @@ const Login = () => {
                         <Form.Control type='password' placeholder='Enter your password' value={password} onChange={(a)=>setPassword(a.target.value)}/>
                     </FormGroup>
                     <div className='text-center'>
-                    <Button variant="light">로그인</Button>{' '}
+                    <Button variant="light" type="submit">로그인</Button>{' '}
                     <Link to = "/signup"><Button variant="light">회원가입</Button></Link>
                     </div>
                 </Form>
             </Col>
+            }
         </Row>
     </Container>
   )

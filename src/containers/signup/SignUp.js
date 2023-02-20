@@ -5,6 +5,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 import { auth, storage, firestore } from '../../firebase/firebase'
 import { setDoc, doc } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
+import { set } from 'firebase/database'
 
 const SignUp = () => {
     
@@ -13,7 +14,7 @@ const SignUp = () => {
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const [file,setFile] = useState(null);
-    const [loaing,setLoading]=useState(false);
+    const [loading,setLoading]=useState(false);
 
     const navigate = useNavigate();
 
@@ -53,8 +54,11 @@ const SignUp = () => {
                     });
                 });
             });
-            setLoading(false);
+            setLoading(false)
+            alert("계정이 생성되었습니다")
+            navigate('/login')
         }catch(error){
+            setLoading(false)
             alert("에러가 발생했습니다.");
         };
     }
@@ -62,6 +66,9 @@ const SignUp = () => {
     return (
     <Container>
         <Row>
+        { loading ? (
+          <Col lg={12} className='text-center'>loading...</Col>
+        ):(
             <Col lg={7} className="m-auto">
                 <h2 className='fw-bold mb-3 text-center'>SignUp</h2>
                 <Form className='fw-bold auth_form ' onSubmit={signup}>
@@ -86,6 +93,7 @@ const SignUp = () => {
                     </div>
                 </Form>
             </Col>
+        )} 
         </Row>
     </Container>
   )

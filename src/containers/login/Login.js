@@ -33,7 +33,7 @@ const Login = () => {
     <Container>
         <Row>
             {
-                loading ? <Col lg={12} className='text-center'>loading...</Col> :             <Col lg={6} className="m-auto">
+                loading ? <Col lg={12} className='text-center'>loading...</Col> :  <Col lg={6} className="m-auto">
                 <h2 className='fw-bold mb-3 text-center'>Login</h2>
                 <Form className='fw-bold auth_form' onSubmit= {signin}>
                     <FormGroup className='mb-2'>

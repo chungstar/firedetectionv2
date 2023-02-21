@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table } from 'react-bootstrap'
+import { Container, Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { listTableItems } from '../../actions/tableActions'
 
@@ -23,30 +23,32 @@ const TableScreen = () => {
           <div>{error}</div>
         ):(
           <>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>timeStamp</th>
-                <th>uid</th>
-                <th>url</th>
-              </tr>
-            </thead>
-            <tbody id="tbody">      
-              {
-                tableItems.map((a,i)=>{
-                  return(
-                  <tr onClick={()=>(console.log(a))}>
-                    <th>{i}</th>
-                    <th>{tableItems[i].timeStamp}</th>
-                    <th>{tableItems[i].uid}</th>
-                    <th>{tableItems[i].url}</th>
-                  </tr>
-                  )
-                })
-              }
-            </tbody>
-          </Table>
+          <Container>
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>timeStamp</th>
+                  <th>uid</th>
+                  <th>url</th>
+                </tr>
+              </thead>
+              <tbody id="tbody">      
+                {
+                  tableItems.map((a,i)=>{
+                    return(
+                    <tr onClick={()=>(console.log(a))}>
+                      <th>{i}</th>
+                      <th>{tableItems[i].timeStamp}</th>
+                      <th>{tableItems[i].uid}</th>
+                      <th>{tableItems[i].url}</th>
+                    </tr>
+                    )
+                  })
+                }
+              </tbody>
+            </Table>
+          </Container>
         </>
       )} 
     </>

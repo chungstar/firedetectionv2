@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Container, Nav, Image, NavDropdown } from 'react-bootstrap'
 import useAuth from '../../custom-hooks/useAuth'
-
+import user from '../../img/user.png'
 const NavigationBar=({navigate}) => {
     const {currentUser} = useAuth();
 
@@ -19,26 +19,33 @@ const NavigationBar=({navigate}) => {
                     navigate('/목록');
                     }}>목록</Nav.Link>
                 </Nav>
-                <Nav className="ms-auto">
-                    <Nav.Link onClick={() => {
-                        navigate('/Login');
-                        }}>{currentUser 
-                            ? currentUser.displayName
-                            :"Login"}</Nav.Link> 
-                </Nav>
+
                 <Nav>
-                    <NavDropdown title={currentUser 
+                    <Nav.Link>{currentUser 
                             ? currentUser.displayName
-                            :"Login"} id="navbarScrollingDropdown">
-                    <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
-                    </NavDropdown>
-                    <Nav.Link>
-                        <Image src={currentUser 
+                            :<span  href="#" onClick={() => {
+                            navigate('/Login');
+                        }}>Login</span >}</Nav.Link>
+                    <NavDropdown title={
+                            <Image src={currentUser 
                             ? currentUser.photoURL
-                            :null} alt="profileimg" style={{height:30, width:30}} roundedCircle></Image>
-                    </Nav.Link>
+                            : user} alt="" style={{height:30, width:30}} roundedCircle />
+                            } id="navbarScrollingDropdown">
+                        {currentUser 
+                        ? 
+                        <><NavDropdown.Item onClick={() => {
+                            navigate('/Login');
+                        } }>로그아웃</NavDropdown.Item></>
+                        :
+                        <><NavDropdown.Item onClick={() => {
+                            navigate('/Login');
+                        } }>로그인</NavDropdown.Item><NavDropdown.Item onClick={() => {
+                            navigate('/SignUp');
+                        } }>회원가입</NavDropdown.Item></>
+                        }
+                    </NavDropdown>
                 </Nav>
+
                 </Navbar.Collapse>
             </Container>
         </Navbar>

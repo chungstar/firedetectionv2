@@ -46,7 +46,7 @@ const Login = () => {
                     </FormGroup>
                     <div className='text-center'>
                     <Button variant="light" type="submit">로그인</Button>{' '}
-                    <Link to = "/signup"><Button variant="light">회원가입</Button></Link>
+                    <Link to = "/SignUp"><Button variant="light">회원가입</Button></Link>
                     </div>
                 </Form>
             </Col>

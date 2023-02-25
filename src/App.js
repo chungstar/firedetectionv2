@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path = '/목록' element={ <ProtectedRoute><TableScreen/></ProtectedRoute> }/>
         <Route path = '/Login' element={ <Login/> }/>
-        <Route path = '/SignUp' element={ <SignUp/> }/>
+        <Route path = '/Signup' element={ <SignUp/> }/>
       </Routes>
     </div>
     

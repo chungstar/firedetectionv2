@@ -2,8 +2,20 @@ import React from "react";
 import { Navbar, Container, Nav, Image, NavDropdown } from 'react-bootstrap'
 import useAuth from '../../custom-hooks/useAuth'
 import user from '../../img/user.png'
+import { signOut } from "firebase/auth"
+import { auth } from "../../firebase/firebase";
+
 const NavigationBar=({navigate}) => {
     const {currentUser} = useAuth();
+    const logout = () =>{
+        signOut(auth).then(() => {
+            // Sign-out successful.
+            alert("로그아웃 되었습니다")
+          }).catch((error) => {
+            // An error happened.
+            alert(error.message);
+          })
+    }
 
     return (
         <Navbar bg="dark" variant="dark" sticky="top">
@@ -33,15 +45,16 @@ const NavigationBar=({navigate}) => {
                             } id="navbarScrollingDropdown">
                         {currentUser 
                         ? 
-                        <><NavDropdown.Item onClick={() => {
-                            navigate('/Login');
-                        } }>로그아웃</NavDropdown.Item></>
+                        <><NavDropdown.Item onClick={ logout
+                        }>로그아웃</NavDropdown.Item></>
                         :
-                        <><NavDropdown.Item onClick={() => {
+                        <>
+                        <NavDropdown.Item onClick={() => {
                             navigate('/Login');
-                        } }>로그인</NavDropdown.Item><NavDropdown.Item onClick={() => {
+                        } }>로그인</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => {
                             navigate('/SignUp');
-                        } }>회원가입</NavDropdown.Item></>
+                        } }>회원가입</NavDropdown.Item> </>
                         }
                     </NavDropdown>
                 </Nav>

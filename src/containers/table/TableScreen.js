@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Table, Modal, Image } from 'react-bootstrap';
+import { Container, Table, Modal, Image, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { listTableItems } from '../../actions/tableActions';
 
@@ -57,14 +57,15 @@ const TableScreen = () => {
           {selectedRowData && (
             <Modal show={showModal} onHide={toggleModal}>
               <Modal.Header closeButton>
-                <Modal.Title>Selected Row Data</Modal.Title>
+                <Modal.Title>{selectedRowData.timeStamp}의 데이터</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <p>Timestamp: {selectedRowData.timeStamp}</p>
-                <p>Img: <Image src={selectedRowData.url}/></p>
+                <p>uid: {selectedRowData.uid}</p>
+                <p>Image: </p>
+                <p><Image src={selectedRowData.url}/></p>
               </Modal.Body>
               <Modal.Footer>
-                <button onClick={toggleModal}>Close</button>
+                <Button onClick={toggleModal}>Close</Button>
               </Modal.Footer>
             </Modal>
           )}

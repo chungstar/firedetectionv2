@@ -21,8 +21,8 @@ const TableScreen = () => {
     setSelectedRowData(rowData);
     toggleModal();
   };
-  const handleDeleteItem = (cartItemId) => {
-    dispatch(deleteItemFromTable(cartItemId))
+  const handleDeleteItem = (itemKey) => {
+    dispatch(deleteItemFromTable(itemKey))
   }
   return (
     <>

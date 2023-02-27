@@ -41,12 +41,12 @@ export const listTableItems = () => (dispatch)=>{
     }
   }
 
-  export const deleteItemFromTable = (itemId) => async (dispatch) => {
+  export const deleteItemFromTable = (itemKey) => async (dispatch) => {
     try {
       dispatch({ type: TABLE_DELETE_REQUEST });
-      const dbRef = ref(db, `Users/${itemId}`);
+      const dbRef = ref(db, `Users/${itemKey}`);
       await remove(dbRef);
-      alert(itemId + '삭제 완료')
+      alert(itemKey + '삭제 완료')
       dispatch({ type: TABLE_DELETE_SUCCESS});
     } catch (error) {
       dispatch({

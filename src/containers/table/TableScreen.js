@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Table, Modal, Image, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { listTableItems } from '../../actions/tableActions';
+import { listTableItems,deleteItemFromTable } from '../../actions/tableActions';
 
 const TableScreen = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,9 @@ const TableScreen = () => {
     setSelectedRowData(rowData);
     toggleModal();
   };
-
+  const handleDeleteItem = (cartItemId) => {
+    dispatch(deleteItemFromTable(cartItemId))
+  }
   return (
     <>
       {loading ? (
@@ -47,7 +49,7 @@ const TableScreen = () => {
                       <th>{i}</th>
                       <th>{rowData.timeStamp}</th>
                       <th>{rowData.uid}</th>
-                      <th onClick={e => e.stopPropagation()}><Button onClick={()=>console.log(rowData)}>delete</Button></th>
+                      <th onClick={e => e.stopPropagation()}><Button onClick={()=>handleDeleteItem(rowData.key)}>delete</Button></th>
                     </tr>
                   );
                 })}

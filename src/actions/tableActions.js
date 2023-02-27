@@ -18,6 +18,7 @@ export const listTableItems = () => (dispatch)=>{
         const dbRef = ref(db, "Users");
         let tableData = [];
         onValue(dbRef, (snapshot) => {
+            tableData = [];
             snapshot.forEach(childSnapshot => {
               const key = childSnapshot.key
               const val = childSnapshot.val()

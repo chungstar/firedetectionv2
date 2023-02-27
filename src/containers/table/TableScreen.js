@@ -37,7 +37,7 @@ const TableScreen = () => {
                   <th>#</th>
                   <th>timeStamp</th>
                   <th>uid</th>
-                  <th>url</th>
+                  <th>삭제</th>
                 </tr>
               </thead>
               <tbody id="tbody">
@@ -47,7 +47,7 @@ const TableScreen = () => {
                       <th>{i}</th>
                       <th>{rowData.timeStamp}</th>
                       <th>{rowData.uid}</th>
-                      <th>{rowData.url}</th>
+                      <th onClick={e => e.stopPropagation()}><Button onClick={()=>console.log(rowData)}>delete</Button></th>
                     </tr>
                   );
                 })}

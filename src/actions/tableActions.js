@@ -1,7 +1,7 @@
-import { 
+import {
     TABLE_LIST_REQUEST,
     TABLE_LIST_SUCCESS,
-    TABLE_LIST_FAIL 
+    TABLE_LIST_FAIL
 } from '../constants/tableConstants'
 import { firebaseApp } from '../firebase/firebase'
 import { getDatabase, ref, onValue } from 'firebase/database';
@@ -10,24 +10,23 @@ import { getDatabase, ref, onValue } from 'firebase/database';
 const db = getDatabase(firebaseApp);
 
 export const listTableItems = () => (dispatch)=>{
-    let tableData = []
-  
+
     function getTableItems(db){
         const dbRef = ref(db, "Users");
-        var urls = [];
+        let tableData = [];
         onValue(dbRef, (snapshot) => {
             snapshot.forEach(childSnapshot => {
-            urls.unshift(childSnapshot.val());
+              const key = childSnapshot.key
+              const val = childSnapshot.val()
+              tableData.unshift({key,...val})
             });
+            dispatch({type: TABLE_LIST_SUCCESS, payload: tableData});
         });
-        return urls
     }
-  
+
     try{
       dispatch({type: TABLE_LIST_REQUEST})
-      tableData = getTableItems(db)
-      console.log(tableData)
-      dispatch({type: TABLE_LIST_SUCCESS, payload: tableData})
+      getTableItems(db)
     }catch(error){
       dispatch({
         type: TABLE_LIST_FAIL,

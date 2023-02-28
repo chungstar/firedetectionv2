@@ -3,6 +3,8 @@ import { Container,Col,Row,Form,FormGroup,Button } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../firebase/firebase'
+import { GoogleAuthProvider } from 'firebase/auth';
+import { signInWithPopup } from 'firebase/auth';
 
 const Login = () => {
     const [email,setEmail] = useState('');
@@ -29,6 +31,22 @@ const Login = () => {
         };
     }
 
+    const signinWithGoogle = async () => {
+        setLoading(true);
+        try {
+          const provider = new GoogleAuthProvider();
+          const result = await signInWithPopup(auth, provider);
+          const user = result.user;
+          console.log(user);
+          setLoading(false);
+          alert('성공적으로 로그인했습니다');
+          navigate('/목록');
+        } catch (error) {
+          setLoading(false);
+          alert(error.message);
+        }
+      };
+
     return (
     <Container>
         <Row>
@@ -49,6 +67,10 @@ const Login = () => {
                     <div className='text-center'>
                     <Button variant="light" type="submit">로그인</Button>{' '}
                     <Link to = "/SignUp"><Button variant="light">회원가입</Button></Link>
+                    </div>
+                    <hr/>
+                    <div className='text-center mt-2'>
+                    <Button variant="dark" onClick={signinWithGoogle}>Google 로그인</Button>
                     </div>
                 </Form>
             </Col>

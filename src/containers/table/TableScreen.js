@@ -49,7 +49,9 @@ const TableScreen = () => {
                       <th>{i}</th>
                       <th>{rowData.timeStamp}</th>
                       <th>{rowData.uid}</th>
-                      <th onClick={e => e.stopPropagation()}><Button onClick={()=>handleDeleteItem(rowData.key)}>delete</Button></th>
+                      <th onClick={e => e.stopPropagation()}>
+                        <Button onClick={()=>handleDeleteItem(rowData.key)}>delete</Button>
+                      </th>
                     </tr>
                   );
                 })}

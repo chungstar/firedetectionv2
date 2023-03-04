@@ -5,7 +5,6 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 import { auth, storage, firestore } from '../../firebase/firebase'
 import { setDoc, doc } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
-import { set } from 'firebase/database'
 
 const SignUp = () => {
     

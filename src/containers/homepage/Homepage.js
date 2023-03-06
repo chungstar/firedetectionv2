@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Parallax, ParallaxLayer } from '@react-spring/web';
+import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import styles from './styles.module.css';
 
 function Page({ offset, gradient, onClick }) {

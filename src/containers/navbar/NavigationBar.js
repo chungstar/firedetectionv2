@@ -39,10 +39,11 @@ const NavigationBar=({navigate}) => {
                             navigate('/Login');
                         }}>Login</span >}</Nav.Link>
                     <NavDropdown title={
-                            <Image src={currentUser 
+                        <Image src={currentUser 
                             ? currentUser.photoURL
                             : user} alt="" style={{height:30, width:30}} roundedCircle />
-                            } id="navbarScrollingDropdown">
+                        } id="navbarScrollingDropdown">
+
                         {currentUser 
                         ? 
                         <><NavDropdown.Item onClick={ logout

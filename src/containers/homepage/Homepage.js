@@ -1,8 +1,13 @@
 import React, { useRef } from 'react';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import styles from './styles.module.css';
+import { useTrail, animated } from '@react-spring/web'
 
 function Page({ offset, gradient, onClick }) {
+  const trails = useTrail(3, {
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+  })
   return (
     <>
       <ParallaxLayer offset={offset} speed={0.2} onClick={onClick}>
@@ -13,8 +18,15 @@ function Page({ offset, gradient, onClick }) {
         <div className={`${styles.slopeEnd} ${styles[gradient]}`} />
       </ParallaxLayer>
 
-      <ParallaxLayer className={`${styles.text} ${styles.number}`} offset={offset} speed={0.3}>
-        <span>0{offset + 1}</span>
+      <ParallaxLayer className={`${styles.number}`} offset={0} speed={0.3}>
+        <span>      
+          {trails.map(props => (
+          <animated.div style={props}>Hello World</animated.div>
+          ))}
+        </span>
+      </ParallaxLayer>
+      <ParallaxLayer className={`${styles.text} ${styles.number}`} offset={1} speed={0.5}>
+        <span>2</span>
       </ParallaxLayer>
     </>
   );
@@ -36,6 +48,7 @@ export default function Homepage() {
         <Page offset={1} gradient="teal" onClick={() => scroll(2)} />
         <Page offset={2} gradient="tomato" onClick={() => scroll(0)} />
       </Parallax>
+
     </div>
   );
 }

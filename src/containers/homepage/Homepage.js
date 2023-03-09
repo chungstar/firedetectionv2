@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import styles from './styles.module.css';
 import { useTrail, animated } from '@react-spring/web'
+import ReactPlayer from 'react-player'
 
 function Page({ offset, gradient, onClick }) {
   const trails = useTrail(3, {
@@ -18,15 +19,16 @@ function Page({ offset, gradient, onClick }) {
         <div className={`${styles.slopeEnd} ${styles[gradient]}`} />
       </ParallaxLayer>
 
-      <ParallaxLayer className={`${styles.number}`} offset={0} speed={0.3}>
+      <ParallaxLayer className={`${styles.text} ${styles.number}`} offset={0} speed={0.3}>
         <span>      
-          {trails.map(props => (
-          <animated.div style={props}>Hello World</animated.div>
-          ))}
+          1
         </span>
       </ParallaxLayer>
       <ParallaxLayer className={`${styles.text} ${styles.number}`} offset={1} speed={0.5}>
         <span>2</span>
+      </ParallaxLayer>
+      <ParallaxLayer className={`${styles.text} ${styles.number}`} offset={2} speed={0.5}>
+        <span><ReactPlayer url='https://www.youtube.com/watch?v=lHqWx7YLBm4' /></span>
       </ParallaxLayer>
     </>
   );

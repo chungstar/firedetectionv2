@@ -28,7 +28,10 @@ function Page({ offset, gradient, onClick }) {
         <span>2</span>
       </ParallaxLayer>
       <ParallaxLayer className={`${styles.text} ${styles.number}`} offset={2} speed={0.5}>
-        <span><ReactPlayer url='https://www.youtube.com/watch?v=lHqWx7YLBm4' /></span>
+        <ReactPlayer url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
+      </ParallaxLayer>
+      <ParallaxLayer className={`${styles.text} ${styles.number}`} offset={3} speed={0.5}>
+        <ReactPlayer url='https://www.youtube.com/watch?v=Ofo64-esJ1k' />
       </ParallaxLayer>
     </>
   );
@@ -45,10 +48,11 @@ export default function Homepage() {
 
   return (
     <div style={{ background: '#dfdfdf' }}>
-      <Parallax className={styles.container} ref={parallax} pages={3} horizontal>
+      <Parallax className={styles.container} ref={parallax} pages={4}>
         <Page offset={0} gradient="pink" onClick={() => scroll(1)} />
         <Page offset={1} gradient="teal" onClick={() => scroll(2)} />
-        <Page offset={2} gradient="tomato" onClick={() => scroll(0)} />
+        <Page offset={2} gradient="tomato" onClick={() => scroll(3)} />
+        <Page offset={3} gradient="pink" onClick={() => scroll(0)} />
       </Parallax>
 
     </div>

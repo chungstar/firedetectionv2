@@ -1,7 +1,12 @@
 .auth_form{
+  text-align: left;
   background: #619efb;
   padding: 40px;
   border-radius: 5px;
+}
+
+.App {
+  text-align: center;
 }
 
 .App-logo {

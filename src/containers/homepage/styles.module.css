@@ -1,11 +1,19 @@
-.container {
+.container > div > div {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100%;
+  justify-content: center;
 }
 
 .video {
   width: 100%;
   height: 100%;
+}
+
+.gradient{
+  content: '';
+  background: linear-gradient(to right, black, transparent);
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 50%;
 }

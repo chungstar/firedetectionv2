@@ -11,9 +11,10 @@
 
 .gradient{
   content: '';
-  background: linear-gradient(to right, black, transparent);
+  background: linear-gradient(to top, black, transparent);
   position: absolute;
   left: 0;
   height: 100%;
-  width: 50%;
+  width: 100%;
 }
+

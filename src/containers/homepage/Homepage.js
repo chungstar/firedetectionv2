@@ -4,7 +4,8 @@ import styles from './styles.module.css';
 import { useTrail, animated, a } from '@react-spring/web'
 import ReactPlayer from 'react-player'
 import 화재감지1 from '../../img/화재감지1.gif'
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Image } from 'react-bootstrap';
+
 const Trail = ({ open, children }) => {
   const items = React.Children.toArray(children);
   const trail = useTrail(items.length, {
@@ -34,46 +35,55 @@ export default function Homepage() {
       <Parallax className={styles.container} pages={3}>
         <ParallaxLayer
           offset={0}
-          speed={0.1}
+          speed={0.2}
           factor={1.3}
           style={{
             backgroundColor: 'black',
-            backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2)), url(${화재감지1})`,
+            backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.2)), url(${화재감지1})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}>
         </ParallaxLayer>
+
         <ParallaxLayer
           offset={1}
           style={{
-            backgroundColor: 'white'
+            backgroundColor: '#212121'
           }}>
-          <Container className={styles.container} onClick={() => set((state) => !state)}>
-          <Row>
-            <Col>
-            <Trail open={open}>
-              <div>hi</div>
-              <div>hi</div>
-              <div>hi</div>
-            </Trail>
-            </Col>
-            <Col>
-            <Trail open={open}>
-              <div>hi</div>
-              <div>hi</div>
-              <div>hi</div>
-            </Trail>
-            </Col>
-          </Row>
+          <Container onClick={() => set((state) => !state)}>
+            <Row>
+              <Col>
+                <Trail open={open}>
+                  <Image height="60" src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+                  <Image height="60" src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+                  <Image height="60" src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+                </Trail>
+              </Col>
+              <Col>
+                <Trail open={open}>
+                  <div>hi</div>
+                  <div>hi</div>
+                  <div>hi</div>
+                </Trail>
+              </Col>
+              <Col>
+                <Trail open={open}>
+                  <div>hi</div>
+                  <div>hi</div>
+                  <div>hi</div>
+                </Trail>
+              </Col>
+            </Row>
           </Container>
         </ParallaxLayer>
 
         <ParallaxLayer
           offset={2}
           style={{
-            backgroundColor: 'black'
+            backgroundColor: '#212121'
           }}>
           <div>
+            <div className='fs-1 fw-semibold text-light'>프로젝트 영상</div>
             <ReactPlayer className={styles.video} url='https://www.youtube.com/watch?v=Ofo64-esJ1k' />
           </div>
         </ParallaxLayer>

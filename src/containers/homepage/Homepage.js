@@ -53,24 +53,29 @@ export default function Homepage() {
           <Container onClick={() => set((state) => !state)}>
             <Row>
               <Col>
+                <div className='fs-1 fw-semibold text-light md-1'>기술 스택</div>
+              </Col>
+              </Row>
+            <Row>
+              <Col>
+                <div className='fs-2 fw-semibold text-light'>프론트앤드</div>
                 <Trail open={open}>
-                  <Image height="60" src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
-                  <Image height="60" src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
-                  <Image height="60" src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+                  <Image height="60" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+                  <Image height="60" src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black" />
+                  <Image height="60" src="https://img.shields.io/badge/React Router-CA4245?style=for-the-badge&logo=ReactRouter&logoColor=black" />
                 </Trail>
               </Col>
               <Col>
+                <div className='fs-2 fw-semibold text-light'>백앤드</div>
                 <Trail open={open}>
-                  <div>hi</div>
-                  <div>hi</div>
-                  <div>hi</div>
+                  <Image height="60" src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=Firebase&logoColor=black" />
                 </Trail>
               </Col>
               <Col>
+                <div className='fs-2 fw-semibold text-light'>딥러닝</div>
                 <Trail open={open}>
-                  <div>hi</div>
-                  <div>hi</div>
-                  <div>hi</div>
+                  <Image height="60" src="https://img.shields.io/badge/YOLO-00FFFF?style=for-the-badge&logo=YOLO&logoColor=black" />
+                  <Image height="60" src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=black" />
                 </Trail>
               </Col>
             </Row>

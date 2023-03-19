@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import styles from './styles.module.css';
-import { useTrail, animated, a } from '@react-spring/web'
+import { useTrail, useScroll, animated, a } from '@react-spring/web'
 import ReactPlayer from 'react-player'
 import 화재감지1 from '../../img/화재감지1.gif'
 import { Container, Row, Col, Image } from 'react-bootstrap';
@@ -29,6 +29,7 @@ const Trail = ({ open, children }) => {
 export default function Homepage() {
 
   const [open, set] = useState(true);
+  const { scrollYProgress } = useScroll();
 
   return (
     <div>
@@ -46,14 +47,15 @@ export default function Homepage() {
         </ParallaxLayer>
 
         <ParallaxLayer
+          onClick={() => set((state) => !state)}
           offset={1}
           style={{
             backgroundColor: '#212121'
           }}>
-          <Container onClick={() => set((state) => !state)}>
+          <Container>
             <Row>
               <Col>
-                <div className='fs-1 fw-semibold text-light md-1'>기술 스택</div>
+                <div className='fs-1 fw-semibold text-light mb-5'>기술 스택</div>
               </Col>
               </Row>
             <Row>

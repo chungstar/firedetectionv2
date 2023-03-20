@@ -1,36 +1,12 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import styles from './styles.module.css';
-import { useTrail, useScroll, animated, a } from '@react-spring/web'
 import ReactPlayer from 'react-player'
 import 화재감지1 from '../../img/화재감지1.gif'
 import { Container, Row, Col, Image } from 'react-bootstrap';
-
-const Trail = ({ open, children }) => {
-  const items = React.Children.toArray(children);
-  const trail = useTrail(items.length, {
-    config: { mass: 5, tension: 2000, friction: 200 },
-    opacity: open ? 1 : 0,
-    x: open ? 0 : 20,
-    height: open ? 110 : 0,
-    from: { opacity: 0, x: 20, height: 0 },
-  });
-  return (
-    <div>
-      {trail.map(({ height, ...style }, index) => (
-        <a.div key={index} className={styles.trailsText} style={style}>
-          <a.div style={{ height }}>{items[index]}</a.div>
-        </a.div>
-      ))}
-    </div>
-  );
-};
+import { Trail } from './Trail';
 
 export default function Homepage() {
-
-  const [open, set] = useState(true);
-  const { scrollYProgress } = useScroll();
-
   return (
     <div>
       <Parallax className={styles.container} pages={3}>
@@ -47,7 +23,6 @@ export default function Homepage() {
         </ParallaxLayer>
 
         <ParallaxLayer
-          onClick={() => set((state) => !state)}
           offset={1}
           style={{
             backgroundColor: '#212121'
@@ -61,7 +36,7 @@ export default function Homepage() {
             <Row>
               <Col>
                 <div className='fs-2 fw-semibold text-light'>프론트앤드</div>
-                <Trail open={open}>
+                <Trail>
                   <Image height="60" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
                   <Image height="60" src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black" />
                   <Image height="60" src="https://img.shields.io/badge/React Router-CA4245?style=for-the-badge&logo=ReactRouter&logoColor=black" />
@@ -69,13 +44,13 @@ export default function Homepage() {
               </Col>
               <Col>
                 <div className='fs-2 fw-semibold text-light'>백앤드</div>
-                <Trail open={open}>
+                <Trail>
                   <Image height="60" src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=Firebase&logoColor=black" />
                 </Trail>
               </Col>
               <Col>
                 <div className='fs-2 fw-semibold text-light'>딥러닝</div>
-                <Trail open={open}>
+                <Trail>
                   <Image height="60" src="https://img.shields.io/badge/YOLO-00FFFF?style=for-the-badge&logo=YOLO&logoColor=black" />
                   <Image height="60" src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=black" />
                 </Trail>

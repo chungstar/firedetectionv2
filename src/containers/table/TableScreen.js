@@ -2,28 +2,31 @@ import React, { useState, useEffect } from 'react';
 import { Container, Table, Modal, Image, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { listTableItems,deleteItemFromTable } from '../../actions/tableActions';
+import { showModal, hideModal } from '../../reducers/modalSlice';
 
 const TableScreen = () => {
   const dispatch = useDispatch();
   const tableItemsList = useSelector((state) => state.tableItemsList);
   const { loading, error, tableItems } = tableItemsList;
 
-  const [selectedRowData, setSelectedRowData] = useState(null);
-  const [showModal, setShowModal] = useState(false);
-
-  const toggleModal = () => setShowModal(!showModal);
+  const modal = useSelector((state) => state.modal);
+  const { showModal: isModalVisible, selectedRowData } = modal;
 
   useEffect(() => {
     dispatch(listTableItems());
   }, [dispatch]);
-
-  const handleRowClick = (rowData) => {
-    setSelectedRowData(rowData);
-    toggleModal();
-  };
+  
   const handleDeleteItem = (itemKey) => {
     dispatch(deleteItemFromTable(itemKey))
-  }
+  };
+
+  const handleRowClick = (rowData) => {
+    dispatch(showModal(rowData));
+  };
+  const handleModalClose = () => {
+    dispatch(hideModal());
+  };
+
   return (
     <>
       {loading ? (
@@ -59,7 +62,7 @@ const TableScreen = () => {
             </Table>
           </Container>
           {selectedRowData && (
-            <Modal show={showModal} onHide={toggleModal}>
+            <Modal show={isModalVisible} onHide={handleModalClose}>
               <Modal.Header closeButton>
                 <Modal.Title>{selectedRowData.timeStamp}의 데이터</Modal.Title>
               </Modal.Header>
@@ -69,7 +72,7 @@ const TableScreen = () => {
                 <p><Image src={selectedRowData.url}/></p>
               </Modal.Body>
               <Modal.Footer>
-                <Button onClick={toggleModal}>Close</Button>
+                <Button onClick={handleModalClose}>Close</Button>
               </Modal.Footer>
             </Modal>
           )}

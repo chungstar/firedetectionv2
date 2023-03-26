@@ -74,9 +74,9 @@ export default function Homepage() {
           offset={0.1}
           speed={0.5}
           factor={1}>
-          <div>
-            <div className='fs-1 fw-semibold text-light'>딥러닝을 통한 화재감지</div>
-          </div>
+          <Trail>
+            <div className='fs-1 fw-semibold text-light'>딥러닝을 통한 화재감지 시스템</div>
+          </Trail>
         </ParallaxLayer>
       </Parallax>
     </div>

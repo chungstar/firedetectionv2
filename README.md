@@ -11,12 +11,13 @@ React와 Redux,middleware 등을 이전 프로젝트에 적용시켜보기
 ## 이전 프로젝트에서 추가 시킨 것
 + 리액트  
 + 테이블 모달  
-+ 로그인
++ 로그인  
 
 ## 배운것들
 + Redux, middleware 작동 방식, 적용방법  
 + react에 대한 복습  
 + firebase 로그인 세팅, 사용방법  
++ react-spring 
 
 ## 추가적으로 구현하고 싶은 것
 + 회원정보 변경, 탈퇴

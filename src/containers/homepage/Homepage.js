@@ -1,29 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import styles from './styles.module.css';
 import ReactPlayer from 'react-player'
 import 화재감지1 from '../../img/화재감지1.gif'
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import { Trail } from './Trail';
+import { useSpring, a } from '@react-spring/web'
 
 export default function Homepage() {
+  const [flipped, set] = useState(false)
+  const { transform, opacity } = useSpring({
+    opacity: flipped ? 1 : 0,
+    transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
+    config: { mass: 5, tension: 500, friction: 80 },
+  })
   return (
     <div>
-      <Parallax className={styles.container} pages={3}>
+      <Parallax className={styles.container} pages={4}>
         <ParallaxLayer
           offset={0}
           speed={0.2}
           factor={1.3}
           style={{
-            backgroundColor: 'black', 
+            backgroundColor: 'black',
             backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.2)), url(${화재감지1})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}>
         </ParallaxLayer>
-
         <ParallaxLayer
           offset={1}
+          style={{
+            backgroundColor: '#212121'
+          }}>
+          <div className={styles.container} onClick={() => set(state => !state)}>
+            <a.div
+              className={`${styles.c} ${styles.back}`}
+              style={{ opacity: opacity.to(o => 1 - o), transform }}
+            />
+            <a.div
+              className={`${styles.c} ${styles.front}`}
+              style={{
+                opacity,
+                transform,
+                rotateX: '180deg',
+              }}
+            />
+          </div>
+        </ParallaxLayer>
+        <ParallaxLayer
+          offset={2}
           style={{
             backgroundColor: '#212121'
           }}>
@@ -32,7 +58,7 @@ export default function Homepage() {
               <Col>
                 <div className='fs-1 fw-semibold text-light mb-5'>기술 스택</div>
               </Col>
-              </Row>
+            </Row>
             <Row>
               <Col>
                 <Trail>
@@ -48,7 +74,7 @@ export default function Homepage() {
                   <Image height="60" src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=Firebase&logoColor=black" />
                 </Trail>
               </Col>
-              <Col>            
+              <Col>
                 <Trail>
                   <div className='fs-2 fw-semibold text-light'>딥러닝</div>
                   <Image height="60" src="https://img.shields.io/badge/YOLO-00FFFF?style=for-the-badge&logo=YOLO&logoColor=black" />
@@ -60,7 +86,7 @@ export default function Homepage() {
         </ParallaxLayer>
 
         <ParallaxLayer
-          offset={2}
+          offset={3}
           style={{
             backgroundColor: '#212121'
           }}>

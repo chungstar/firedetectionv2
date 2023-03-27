@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Container, Table, Modal, Image, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { listTableItems,deleteItemFromTable } from '../../actions/tableActions';
+import { listTableItems, deleteItemFromTable } from '../../actions/tableActions';
 import { showModal, hideModal } from '../../reducers/modalSlice';
 
 const TableScreen = () => {
@@ -15,7 +15,7 @@ const TableScreen = () => {
   useEffect(() => {
     dispatch(listTableItems());
   }, [dispatch]);
-  
+
   const handleDeleteItem = (itemKey) => {
     dispatch(deleteItemFromTable(itemKey))
   };
@@ -53,7 +53,7 @@ const TableScreen = () => {
                       <th>{rowData.timeStamp}</th>
                       <th>{rowData.uid}</th>
                       <th onClick={e => e.stopPropagation()}>
-                        <Button variant="danger" onClick={()=>handleDeleteItem(rowData.key)}>delete</Button>
+                        <Button variant="danger" onClick={() => handleDeleteItem(rowData.key)}>delete</Button>
                       </th>
                     </tr>
                   );
@@ -61,6 +61,7 @@ const TableScreen = () => {
               </tbody>
             </Table>
           </Container>
+          <>
           {selectedRowData && (
             <Modal show={isModalVisible} onHide={handleModalClose}>
               <Modal.Header closeButton>
@@ -69,13 +70,15 @@ const TableScreen = () => {
               <Modal.Body>
                 <p>uid: {selectedRowData.uid}</p>
                 <p>Image: </p>
-                <p><Image src={selectedRowData.url}/></p>
+                <p><Image src={selectedRowData.url} /></p>
               </Modal.Body>
               <Modal.Footer>
                 <Button onClick={handleModalClose}>Close</Button>
               </Modal.Footer>
             </Modal>
           )}
+          </>
+
         </>
       )}
     </>

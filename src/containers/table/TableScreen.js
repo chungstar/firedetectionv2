@@ -61,7 +61,6 @@ const TableScreen = () => {
               </tbody>
             </Table>
           </Container>
-          <>
           {selectedRowData && (
             <Modal show={isModalVisible} onHide={handleModalClose}>
               <Modal.Header closeButton>
@@ -77,8 +76,6 @@ const TableScreen = () => {
               </Modal.Footer>
             </Modal>
           )}
-          </>
-
         </>
       )}
     </>

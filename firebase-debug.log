@@ -1,0 +1,28 @@
+[debug] [2023-03-29T14:29:49.071Z] ----------------------------------------------------------------------
+[debug] [2023-03-29T14:29:49.074Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\gusrb\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init hosting
+[debug] [2023-03-29T14:29:49.075Z] CLI Version:   11.25.2
+[debug] [2023-03-29T14:29:49.075Z] Platform:      win32
+[debug] [2023-03-29T14:29:49.075Z] Node Version:  v16.16.0
+[debug] [2023-03-29T14:29:49.076Z] Time:          Wed Mar 29 2023 23:29:49 GMT+0900 (대한민국 표준시)
+[debug] [2023-03-29T14:29:49.077Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-29T14:29:49.088Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-29T14:29:49.089Z] > authorizing via signed-in user (gusrb0511@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\gusrb\Desktop\deeplearning-firedetectionV2\firedetectionv2
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 

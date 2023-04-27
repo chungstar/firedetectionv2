@@ -33,20 +33,6 @@ export default function Homepage() {
           style={{
             backgroundColor: '#212121'
           }}>
-          <div className={styles.container} onClick={() => set(state => !state)}>
-            <a.div
-              className={`${styles.c} ${styles.back}`}
-              style={{ opacity: opacity.to(o => 1 - o), transform }}
-            />
-            <a.div
-              className={`${styles.c} ${styles.front}`}
-              style={{
-                opacity,
-                transform,
-                rotateX: '180deg',
-              }}
-            />
-          </div>
         </ParallaxLayer>
         <ParallaxLayer
           offset={2}

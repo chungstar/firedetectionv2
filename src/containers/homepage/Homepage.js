@@ -1,19 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import styles from './styles.module.css';
 import ReactPlayer from 'react-player'
 import 화재감지1 from '../../img/화재감지1.gif'
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import { Trail } from './Trail';
-import { useSpring, a } from '@react-spring/web'
 
 export default function Homepage() {
-  const [flipped, set] = useState(false)
-  const { transform, opacity } = useSpring({
-    opacity: flipped ? 1 : 0,
-    transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
-    config: { mass: 5, tension: 500, friction: 80 },
-  })
   return (
     <div>
       <Parallax className={styles.container} pages={4}>
@@ -28,12 +21,14 @@ export default function Homepage() {
             backgroundPosition: 'center',
           }}>
         </ParallaxLayer>
+        
         <ParallaxLayer
           offset={1}
           style={{
             backgroundColor: '#212121'
           }}>
         </ParallaxLayer>
+
         <ParallaxLayer
           offset={2}
           style={{

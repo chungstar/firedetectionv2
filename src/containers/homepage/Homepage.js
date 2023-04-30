@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player'
 import 화재감지1 from '../../img/화재감지1.gif'
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import { Trail } from './Trail';
+import { Example } from './Test';
 
 export default function Homepage() {
   return (
@@ -27,6 +28,7 @@ export default function Homepage() {
           style={{
             backgroundColor: '#212121'
           }}>
+            <Example />
         </ParallaxLayer>
 
         <ParallaxLayer

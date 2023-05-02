@@ -26,9 +26,11 @@ export default function Homepage() {
         <ParallaxLayer
           offset={1}
           style={{
-            backgroundColor: '#212121'
+            backgroundColor: 'white'
           }}>
-            <Example />
+            <div className="example-container">
+              <Example />
+            </div>
         </ParallaxLayer>
 
         <ParallaxLayer

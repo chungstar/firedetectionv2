@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import { images } from "./image-data";
+import styles from './styles.module.css';
 
 const variants = {
   enter: (direction) => {
@@ -67,11 +68,11 @@ export const Example = () => {
           }}
         />
       </AnimatePresence>
-      <div className="next" onClick={() => paginate(1)}>
+      <div className={styles.next} onClick={() => paginate(1)}>
         {">"}
       </div>
-      <div className="prev" onClick={() => paginate(-1)}>
-        {"<"}
+      <div className={styles.prev} onClick={() => paginate(-1)}>
+        {">"}
       </div>
     </>
   );

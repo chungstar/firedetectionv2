@@ -9,7 +9,7 @@ import { Example } from './Test';
 
 export default function Homepage() {
   return (
-    <div>
+    <>
       <Parallax className={styles.container} pages={4}>
         <ParallaxLayer
           offset={0}
@@ -28,7 +28,7 @@ export default function Homepage() {
           style={{
             backgroundColor: 'white'
           }}>
-            <div className="example-container">
+            <div className={styles.examplecontainer}>
               <Example />
             </div>
         </ParallaxLayer>
@@ -90,6 +90,6 @@ export default function Homepage() {
           </Trail>
         </ParallaxLayer>
       </Parallax>
-    </div>
+    </>
   );
 }

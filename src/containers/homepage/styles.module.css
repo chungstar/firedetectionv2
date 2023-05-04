@@ -31,10 +31,7 @@
 .examplecontainer {
   width: 100vw;
   height: 100vh;
-  background: #151515;
-  overflow: hidden;
-  padding: 0;
-  margin: 0;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,6 +54,11 @@
   font-weight: bold;
   font-size: 18px;
   z-index: 2;
+}
+
+img {
+  position: absolute;
+  max-width: auto;
 }
 
 .next {

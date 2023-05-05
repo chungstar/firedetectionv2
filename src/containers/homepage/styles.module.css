@@ -56,7 +56,7 @@
   z-index: 2;
 }
 
-img {
+.examplecontainer > img {
   position: absolute;
   max-width: auto;
 }

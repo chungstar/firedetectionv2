@@ -26,7 +26,7 @@ export default function Homepage() {
         <ParallaxLayer
           offset={1}
           style={{
-            backgroundColor: 'white'
+            backgroundColor: '#212121'
           }}>
             <div className={styles.examplecontainer}>
               <Example />
@@ -45,7 +45,7 @@ export default function Homepage() {
               </Col>
             </Row>
             <Row>
-              <Col>
+              <Col sm>
                 <Trail>
                   <div className='fs-2 fw-semibold text-light'>프론트앤드</div>
                   <Image height="60" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
@@ -53,13 +53,13 @@ export default function Homepage() {
                   <Image height="60" src="https://img.shields.io/badge/React Router-CA4245?style=for-the-badge&logo=ReactRouter&logoColor=black" />
                 </Trail>
               </Col>
-              <Col>
+              <Col sm>
                 <Trail>
                   <div className='fs-2 fw-semibold text-light'>백앤드</div>
                   <Image height="60" src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=Firebase&logoColor=black" />
                 </Trail>
               </Col>
-              <Col>
+              <Col sm>
                 <Trail>
                   <div className='fs-2 fw-semibold text-light'>딥러닝</div>
                   <Image height="60" src="https://img.shields.io/badge/YOLO-00FFFF?style=for-the-badge&logo=YOLO&logoColor=black" />

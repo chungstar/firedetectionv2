@@ -30,7 +30,7 @@ const swipePower = (offset, velocity) => {
   return Math.abs(offset) * velocity;
 };
 
-export const Example = () => {
+export const Slide = () => {
   const [[page, direction], setPage] = useState([0, 0]);
 
   const imageIndex = wrap(0, images.length, page);

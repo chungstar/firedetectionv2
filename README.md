@@ -1,12 +1,15 @@
 # firedetectionv2
-## 
-이전 [프로젝트](https://github.com/chungstar/deeplearning-firedetection)의 프론트엔드 업그레이드
+
+## 링크
+[프로젝트 링크](https://firedetection-c05b5.firebaseapp.com/)
 
 |before|after|
 |---|---|
 |![화면 캡처 2023-01-16 175849](https://user-images.githubusercontent.com/58381211/228270949-027420b6-d978-40dd-acb6-ed4617814f21.png)|![화면 캡처 2023-02-25 162450](https://user-images.githubusercontent.com/58381211/228271503-cc34063e-7660-47ad-9304-8fa20e98ced5.png)|
 
 ## 목적
+이전 [프로젝트](https://github.com/chungstar/deeplearning-firedetection)의 프론트엔드 업그레이드
+
 React와 Redux,middleware 등을 이전 프로젝트에 적용시켜보기
 
 ## 기술 스택 

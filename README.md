@@ -29,7 +29,7 @@ React와 Redux,middleware 등을 이전 프로젝트에 적용시켜보기
 + Redux, middleware 작동 방식, 적용방법  
 + react    
 + firebase 로그인 세팅, 사용방법  
-+ react-spring 
++ framer-motion,react-spring 
 
 ## 추가적으로 구현하고 싶은 것
 + 회원정보 변경, 탈퇴
